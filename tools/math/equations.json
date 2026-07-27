@@ -1,0 +1,56 @@
+[
+ {
+  "file": "rotation_and_inertia_tensors",
+  "line": 68,
+  "display": true,
+  "tex": "I = \\begin{bmatrix} I_{xx} & I_{xy} & I_{xz} \\\\ I_{yx} & I_{yy} & I_{yz} \\\\ I_{zx} & I_{zy} & I_{zz} \\end{bmatrix}"
+ },
+ {
+  "file": "rotation_and_inertia_tensors",
+  "line": 72,
+  "display": true,
+  "tex": "I = \\begin{bmatrix} I_{x} & 0 & 0 \\\\ 0 & I_{y} & 0 \\\\ 0 & 0 & I_{z} \\end{bmatrix}"
+ },
+ {
+  "file": "rotation_and_inertia_tensors",
+  "line": 94,
+  "display": false,
+  "tex": "I = mr^2"
+ },
+ {
+  "file": "rotation_and_inertia_tensors",
+  "line": 110,
+  "display": true,
+  "tex": "I = \\begin{bmatrix} 0.177721 & 0 & 0 \\\\ 0 & 0.304776 & 0 \\\\ 0 & 0 & 0.177721 \\end{bmatrix}"
+ },
+ {
+  "file": "rotation_and_inertia_tensors",
+  "line": 136,
+  "display": true,
+  "tex": "I = 1/2mr^2"
+ },
+ {
+  "file": "rotation_and_inertia_tensors",
+  "line": 142,
+  "display": true,
+  "tex": "\\int_0^{h/2} (r^2-(y+r-h/2)^2)^2\\,dy"
+ },
+ {
+  "file": "collision_response_and_coulomb_friction",
+  "line": 62,
+  "display": true,
+  "tex": "j = -( 1 + e ) \\boldsymbol{p} \\cdot \\boldsymbol{n}"
+ },
+ {
+  "file": "collision_response_and_coulomb_friction",
+  "line": 114,
+  "display": true,
+  "tex": "j = \\dfrac{ -( 1 + e ) \\boldsymbol{v} \\cdot \\boldsymbol{n} } { m^{-1} + ( \\boldsymbol{I^{-1}} ( \\boldsymbol{r} \\times \\boldsymbol{n} ) \\times \\boldsymbol{r} ) \\cdot \\boldsymbol{n} }"
+ },
+ {
+  "file": "collision_response_and_coulomb_friction",
+  "line": 151,
+  "display": true,
+  "tex": "j_t = \\dfrac{ - \\boldsymbol{v} \\cdot \\boldsymbol{t} } { m^{-1} + ( \\boldsymbol{I^{-1}} ( \\boldsymbol{r} \\times \\boldsymbol{t} ) \\times \\boldsymbol{r} ) \\cdot \\boldsymbol{t} }"
+ }
+]
