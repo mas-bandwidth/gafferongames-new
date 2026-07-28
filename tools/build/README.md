@@ -42,3 +42,16 @@ again.
   article uses markdown this converter doesn't handle.
 * `out/` is gitignored — it is a build product, and copying `static/img` into it
   would otherwise duplicate a large tree.
+
+## A real defect the checker found on its first run
+
+`state_synchronization` linked to `/post/reliability_and_flow_control/`. That URL
+**404s on the live site today** and has presumably done so for years; the article it
+means is live and healthy at `/post/reliability_ordering_and_congestion_avoidance_over_udp/`.
+
+Fixed here in the rebuild, and recorded here rather than changed silently — it is a
+correction to published prose, small and obvious, but not mine to make invisibly.
+The live site still has the broken link.
+
+This is the argument for `check.sh` in one example: the build reported "0 failed"
+and was telling the truth. The defect was in the artifact, not the process.
