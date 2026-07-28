@@ -55,3 +55,25 @@ The live site still has the broken link.
 
 This is the argument for `check.sh` in one example: the build reported "0 failed"
 and was telling the truth. The defect was in the artifact, not the process.
+
+## The bug that mattered more than the dead link
+
+The first parser handled only TOML front matter. Two of the 33 articles use YAML —
+`---` delimiters, `summary:` where the rest say `description =`. For those two the
+match simply failed, so the front matter fell through into the body and rendered as
+page content, under an empty `<title>`.
+
+The build printed `0 failed`. `check.sh` printed `clean`. Neither was lying; neither
+was looking at this.
+
+It surfaced because the index reported **31 articles** while the tree held **33**.
+A stated count disagreeing with the list beneath it is worth chasing every time.
+
+Both were then fixed, and the checker was taught the class: titleless pages, leaked
+front-matter keys, and index-vs-tree coverage. That last check immediately earned
+itself by catching that the parser had been fixed in `build.js` and left broken in
+`index.js` — the same defect, in a second place.
+
+The lesson is not "write a better parser." It is that a verifier only finds the
+failures someone thought to look for, so every real defect should also buy a new
+check.

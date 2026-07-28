@@ -43,6 +43,24 @@ grep -ohE 'href="[a-z0-9_]+\.html"' "$OUT"/post/*.html \
 echo "-- suspiciously small pages (a silent conversion failure looks like this) --"
 find "$OUT/post" -name '*.html' -size -3k
 
+
+echo "-- titleless pages and leaked front matter --"
+for f in "$OUT"/post/*.html; do
+  t=$(grep -o '<title>[^<]*</title>' "$f" | head -1)
+  case "$t" in "<title></title>"|"") echo "   NO TITLE $(basename "$f")"; fails=$((fails+1));; esac
+done
+n=$(grep -lE '^(draft|featured|focal_point|categories|tags|summary|date):' "$OUT"/post/*.html 2>/dev/null | wc -l | tr -d ' ')
+[ "$n" = "0" ] || { grep -lE '^(draft|featured|focal_point|categories|tags|summary|date):' "$OUT"/post/*.html; fails=$((fails+1)); }
+echo "   $n page(s) with raw front matter in the body"
+
+echo "-- index covers every built page --"
+if [ -f "$OUT/index.html" ]; then
+  for f in "$OUT"/post/*.html; do
+    b=$(basename "$f")
+    grep -q "post/$b" "$OUT/index.html" || { echo "   NOT INDEXED $b"; fails=$((fails+1)); }
+  done
+fi
+
 echo "-- math actually present where the source had it --"
 src_eq=$(grep -oh '\[latex\]' content/post/*.md 2>/dev/null | wc -l | tr -d ' ')
 out_eq=$(grep -oh 'class="katex' "$OUT"/post/*.html 2>/dev/null | wc -l | tr -d ' ')
